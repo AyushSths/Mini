@@ -21,22 +21,6 @@ type Product = {
 };
 
 const ProductCard = async () => {
-  // const [products, setProducts] = useState<Product[]>([]);
-
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     try {
-  //       const res = await fetch("https://api.freeapi.app/api/v1/public/randomproducts");
-  //       const data = await res.json();
-  //       console.log(data)
-  //       setProducts(data.data.data);
-  //     } catch (error) {
-  //       console.error("Error fetching products:", error);
-  //     }
-  //   };
-
-  //   fetchProducts();
-  // }, []);
 
   const res = await fetch(
     `https://api.freeapi.app/api/v1/public/randomproducts`
@@ -45,11 +29,11 @@ const ProductCard = async () => {
   const products: Product[] = data.data.data;
   console.log(products);
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-6 mt-15 lg:px-15 px-5 pb-15">
+    <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-6 lg:px-15 px-5">
       {products.map((item,index) => {
         return (
           <Link href={`/products/${item.id}`} key={item.id}>
-            <Card className="group flex pt-0 transform duration-150 ease-in hover:bg-gray-200 h-full">
+            <Card className="group flex pt-0 transform duration-150 ease-in hover:bg-gray-200 h-full shadow-lg">
               <div className="flex justify-center">
                 <img
                   src={item.thumbnail}

@@ -14,7 +14,7 @@ const CartButton = () => {
           onClick={() => {
             console.log("Click");
           }}
-          className="cursor-pointer bg-slate-700 "
+          className="cursor-pointer bg-slate-700 hover:bg-slate-800"
         >
           <FontAwesomeIcon icon={faShoppingCart} className="" />
         </Button>
