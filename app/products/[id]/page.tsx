@@ -10,8 +10,14 @@ type ProductDetailProps =  {
 
 const ProductDetail = async ({ params }:  ProductDetailProps) => {
   const res = await fetch(
-    `https://api.freeapi.app/api/v1/public/randomproducts/${params.id}`
+    `https://api.freeapi.app/api/v1/public/randomproducts/${params.id}`,
+    { cache: "no-store" }
   );
+
+   if (!res.ok) {
+    throw new Error("Failed to fetch product");
+  }
+
   const data = await res.json();
   const product = data.data;
   console.log(product);
