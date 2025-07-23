@@ -1,24 +1,20 @@
+"use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import AddBtn from "../AddBtn";
 
-const ProductDetail = async ({
-  params,
-}: {
-  params: { id: string };
-}) => {
-  const res = await fetch(
-    `https://api.freeapi.app/api/v1/public/randomproducts/${params.id}`,
-    { cache: "no-store" }
-  );
+const ProductDetail = () => {
+  const [product, setProduct] = useState<any>(null);
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch product");
-  }
+  useEffect(() => {
+    const saved = localStorage.getItem("selectedProduct");
+    if (saved) {
+      setProduct(JSON.parse(saved));
+    }
+  }, []);
 
-  const json = await res.json();
-  const product = json.data;
+  if (!product) return <div className="p-4">Loading product...</div>;
 
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -35,9 +31,7 @@ const ProductDetail = async ({
             />
           </div>
           <div>
-            <h1 className="text-2xl md:text-4xl font-bold">
-              {product.title}
-            </h1>
+            <h1 className="text-2xl md:text-4xl font-bold">{product.title}</h1>
             <p className="mt-3">{product.description}</p>
             <p className="mt-3 opacity-70">Brand: {product.brand}</p>
             <p className="my-5 py-5 border-y-2 text-2xl text-red-600 font-semibold">
@@ -61,16 +55,3 @@ const ProductDetail = async ({
 };
 
 export default ProductDetail;
-
-// import React from 'react'
-
-// const page = () => {
-//   return (
-//     <div>
-//       This is product detail page
-//     </div>
-//   )
-// }
-
-// export default page
-
