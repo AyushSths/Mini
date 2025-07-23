@@ -9,10 +9,26 @@ type Order = {
   shippingFee: number;
 };
 
-const Chkbtn = ({ order }: { order: Order }) => {
+type selectedItems={
+   id: string;
+    title: string;
+    price: number;
+    quantity: number;
+    thumbnail: string;
+    brand: string;
+}
+
+type ChkbtnProps = {
+  order: Order;
+  items: selectedItems[];
+};
+
+const Chkbtn: React.FC<ChkbtnProps> = ({ order, items })  => {
   const handleClick = () => {
     console.log(order);
     localStorage.setItem("checkout", JSON.stringify(order));
+    localStorage.setItem("selectedItems", JSON.stringify(items));
+    
   };
   return (
     <div className=" flex md:justify-center">

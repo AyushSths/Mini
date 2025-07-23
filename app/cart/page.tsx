@@ -1,7 +1,7 @@
 "use client";
 import { useCartStore } from "@/store/cartStore";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CartQuantity from "./CartQuantity";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -20,6 +20,7 @@ const Cart = () => {
   };
 
   const selectedItems = cart.filter((item) => checkedItems.includes(item.id));
+  console.log("selected items", selectedItems);
   const subtotal = selectedItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -27,8 +28,13 @@ const Cart = () => {
   const shippingFee = selectedItems.length > 0 ? 100 : 0;
   const total = subtotal + shippingFee;
 
-  localStorage.setItem ("checkout", JSON.stringify([subtotal,shippingFee,total]));
-
+  useEffect(() => {
+    localStorage.setItem(
+      "checkout",
+      JSON.stringify([subtotal, shippingFee, total])
+    );
+  });
+  
   return (
     <div className="lg:px-15 px-5 max-w-[1480px] m-auto">
       <p className="md:text-base text-sm font-semibold opacity-60">
@@ -95,7 +101,8 @@ const Cart = () => {
             <div className="order-info text-lg flex flex-col gap-y-3 mt-3">
               <div className="flex justify-between">
                 <p className="opacity-70">
-                  Subtotal ({selectedItems.reduce((sum, item) => sum + item.quantity, 0)})
+                  Subtotal (
+                  {selectedItems.reduce((sum, item) => sum + item.quantity, 0)})
                 </p>
                 <p>Rs.{subtotal}</p>
               </div>
@@ -110,11 +117,14 @@ const Cart = () => {
             </div>
           }
           <div className="mt-5">
-            <Chkbtn order={{
-              total: total,
-              subtotal: subtotal,
-              shippingFee: shippingFee,
-            }}/>
+            <Chkbtn
+              order={{
+                total: total,
+                subtotal: subtotal,
+                shippingFee: shippingFee,
+              }}
+              items={selectedItems}
+            />
           </div>
         </section>
       </div>

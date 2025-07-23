@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import OrderSummary from "./OrderSummary";
-import { clear } from "console";
 
 type FormData = {
   name: string;
@@ -28,7 +27,7 @@ const CheckoutForm = () => {
     }));
   };
 
-  const handleSubmit = (): boolean => {
+const handleSubmit = (): boolean => {
   if (
     !formData.name ||
     !formData.email ||
@@ -38,24 +37,26 @@ const CheckoutForm = () => {
     alert("Please fill in all fields");
     return false;
   }
-  
-  const existingData = localStorage.getItem("formData");
-  let formDataArray: FormData[] = [];
 
-  try {
-    const parsed = JSON.parse(existingData || "[]");
-    formDataArray = Array.isArray(parsed) ? parsed : [parsed];
-  } catch (err) {
-    formDataArray = []; 
-  }
+  const selectedItems = JSON.parse(localStorage.getItem("selectedItems") || "[]");
+  const order = JSON.parse(localStorage.getItem("checkout") || "{}");
 
-  formDataArray.push(formData);
+  const completeOrder = {
+    customer: formData,
+    order: order,
+    items: selectedItems,
+    date: new Date().toISOString(), 
+  };
 
-  localStorage.setItem("formData", JSON.stringify(formDataArray));
+  const existingOrders = JSON.parse(localStorage.getItem("allOrders") || "[]");
+  const updatedOrders = [...existingOrders, completeOrder];
 
-  console.log("Form submitted:", formData);
+  localStorage.setItem("allOrders", JSON.stringify(updatedOrders));
+
+  console.log("New order saved:", completeOrder);
   return true;
 };
+
 
   return (
     <>
