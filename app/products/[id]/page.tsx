@@ -1,9 +1,14 @@
 import React from "react";
 import AddBtn from "../AddBtn";
-import Quantity from "../Quantity";
 import Link from "next/link";
 
-const ProductDetail = async ({ params }: { params: { id: string } }) => {
+type ProductDetailProps =  {
+  params: {
+    id: string;
+  };
+}
+
+const ProductDetail = async ({ params }:  ProductDetailProps) => {
   const res = await fetch(
     `https://api.freeapi.app/api/v1/public/randomproducts/${params.id}`
   );
