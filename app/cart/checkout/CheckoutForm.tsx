@@ -28,13 +28,21 @@ const CheckoutForm = () => {
   };
 
 const handleSubmit = (): boolean => {
-  if (
-    !formData.name ||
-    !formData.email ||
-    !formData.phone ||
-    !formData.address
-  ) {
+  const { name, email, phone, address } = formData;
+
+  if (!name || !email || !phone || !address) {
     alert("Please fill in all fields");
+    return false;
+  }
+
+  if (phone.length !== 10) {
+    alert("Phone number must be exactly 10 digits");
+    return false;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Please enter a valid email address (e.g., abc@gmail.com)");
     return false;
   }
 
@@ -45,7 +53,7 @@ const handleSubmit = (): boolean => {
     customer: formData,
     order: order,
     items: selectedItems,
-    date: new Date().toISOString(), 
+    date: new Date().toISOString(),
   };
 
   const existingOrders = JSON.parse(localStorage.getItem("allOrders") || "[]");
@@ -56,6 +64,7 @@ const handleSubmit = (): boolean => {
   console.log("New order saved:", completeOrder);
   return true;
 };
+
 
 
   return (
