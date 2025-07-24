@@ -28,7 +28,7 @@ export default function RevenuePage() {
   }, []);
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
+    <div className="p-6 px-0 bg-gray-50 min-h-screen">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold mb-6">Revenue Dashboard</h2>
 

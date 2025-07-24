@@ -30,8 +30,8 @@ export default function OrdersPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-[1280px] mx-auto rounded-lg  p-6">
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-[1280px] mx-auto rounded-lg  p-6 px-0">
         <h2 className="text-3xl font-semibold mb-4">All Orders</h2>
         <div className="  max-h-[680px] overflow-x-scroll shadow-md rounded border">
           <table className="min-w-full bg-white text-left text-sm">

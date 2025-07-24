@@ -28,7 +28,10 @@ const ProductGrid = ({ products }: { products: Product[] }) => {
   };
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-6 lg:px-15 px-5">
+    <div>
+      
+      <p className=" lg:px-15 px-5 mb-5 text-4xl font-bold text-center">All Products</p>
+      <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-6 lg:px-15 px-5 ">
       {products.map((item) => (
         <Card
           key={item.id}
@@ -53,6 +56,7 @@ const ProductGrid = ({ products }: { products: Product[] }) => {
           </CardContent>
         </Card>
       ))}
+    </div>
     </div>
   );
 };
