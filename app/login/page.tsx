@@ -8,8 +8,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const loginSchema = z.object({
-  email: z.string().min(1, "Email is required"),
-  password: z.string().min(1, "Password is required"),
+  email: z.email(),
+  password: z.string().min(8),
 });
 
 type LoginFormInputs = z.infer<typeof loginSchema>;
@@ -36,7 +36,7 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center px-4">
+    <div className="min-h-screen flex justify-center items-center px-4 -mt-20">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-sm w-full space-y-4 border rounded-lg p-6 shadow"
@@ -44,7 +44,7 @@ export default function AdminLoginPage() {
         <h2 className="text-2xl font-semibold text-center">Admin Login</h2>
 
         <div>
-          <Input placeholder="email" {...register("email")} />
+          <Input placeholder="Email" {...register("email")} />
           {errors.email && (
             <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
           )}

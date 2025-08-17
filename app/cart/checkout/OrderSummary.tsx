@@ -16,7 +16,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 type Props = {
-  onSubmit: () => boolean; // returns true if valid
+  onSubmit: () => Promise<boolean>;
 };
 
 const OrderSummary = ({ onSubmit }: Props) => {
@@ -37,8 +37,8 @@ const OrderSummary = ({ onSubmit }: Props) => {
     }
   }, []);
 
-  const handleClick = () => {
-    const success = onSubmit();
+  const handleClick = async() => {
+    const success =await onSubmit();
     if (success) {
       setOpen(true); // only open if valid
     }

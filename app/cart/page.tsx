@@ -37,7 +37,7 @@ const Cart = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      <div className="lg:px-15 px-3 max-w-[1480px] m-auto pt-15">
+      <div className="lg:px-15 px-3 max-w-[1480px] m-auto pt-10">
         <p className="md:text-base text-sm font-semibold opacity-60">
           <Link href="/">Home</Link> {">"} Cart
         </p>
