@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 // import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import ProductGrid from "@/components/ProductGrid";
@@ -16,7 +16,7 @@ type Product = {
   discountPercentage: number;
 };
 
-const page = () => {
+const CategoryPage = () => {
   const [catItems, setCatItems] = useState([]);
   const categoryParams = useSearchParams();
   const category = categoryParams.get("category");
@@ -60,4 +60,10 @@ const page = () => {
   );
 };
 
-export default page;
+export default function PageWithSuspense() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <CategoryPage />
+    </Suspense>
+  );
+}
