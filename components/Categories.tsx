@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -28,35 +28,37 @@ const Categories = () => {
     },
   ];
   const router = useRouter();
-    const handleCategoryClick = (category: string) => {
-        router.push(`/products/category?category=${category}`);
-    };
+  const handleCategoryClick = (category: string) => {
+    router.push(`/products/category?category=${category}`);
+  };
   return (
     <div className="px-3 py-10">
       <h1 className="md:text-3xl text-2xl font-bold mb-4">Categories</h1>
       <div className="max-w-[1380px] mx-auto">
         <div className="flex flex-wrap justify-center">
-          <div className="w-full cursor-pointer grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-2">
+          <div className="cursor-pointer grid lg:grid-cols-4 grid-cols-2 gap-2">
             {data.map((item, index) => {
               return (
                 <div
-                  className="bg-white p-1 rounded-lg shadow-md hover:shadow-lg transform duration-150 ease-in hover:scale-105 z-0"
+                  className="bg-white p-1 rounded-lg shadow-md hover:shadow-lg transform duration-150 ease-in hover:scale-105 z-0 relative overflow-hidden"
                   key={index}
                   onClick={() => handleCategoryClick(item.name)}
                 >
-                  <div className=" w-full h-full ">
+                  <div className="h-full">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full h-full object-cover rounded-md mb-4 "
+                      className="h-full object-cover rounded-md"
                     />
                   </div>
-                  <div className="group flex flex-col justify-center relative z-10 h-full bg-black text-white opacity-0 backdrop-blur-2xl hover:opacity-75 transition-opacity duration-300 rounded-lg transform translate-y-[-100%] p-4">
-                    <div className="flex flex-col justify-center items-center  transform translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300">
-                      <h2 className="text-2xl font-semibold mb-2">
+                  <div className="group flex flex-col justify-center relative z-10 h-full bg-black text-white lg:opacity-0 opacity-75 backdrop-blur-2xl md:hover:opacity-75 transition-opacity duration-300 rounded-lg transform translate-y-[-100%] md:p-4 p-2">
+                    <div className="flex flex-col justify-center items-center transform lg:translate-y-[100%] translate-y-0 md:group-hover:translate-y-0 transition-transform duration-300">
+                      <h2 className="md:text-3xl text-xl font-semibold mb-2">
                         {item.name}
                       </h2>
-                      <p className="text-center">{item.description}</p>
+                      <p className="text-center md:text-base text-xs">
+                        {item.description}
+                      </p>
                     </div>
                   </div>
                 </div>

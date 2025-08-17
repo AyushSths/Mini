@@ -28,9 +28,8 @@ const CategoryPage = () => {
     const fetchSearchResults = async () => {
       const res = await fetch(`https://dummyjson.com/products`);
       const data = await res.json();
-      const filteredProducts = data.products.filter(
-        (product: Product) =>
-          product.category.toLowerCase().includes(category.toLowerCase())
+      const filteredProducts = data.products.filter((product: Product) =>
+        product.category.toLowerCase().includes(category.toLowerCase())
       );
       setCatItems(filteredProducts);
     };
@@ -39,24 +38,16 @@ const CategoryPage = () => {
   }, [category]);
 
   console.log("Category results:", catItems);
-  
 
   return (
-    
-      <div className="pt-4">
+    <div className="pt-4">
       <div className="max-w-[1380px] mx-auto px-4 py-8 flex flex-col gap-y-4">
-        <h1 className="md:text-3xl text-2xl font-extrabold"><span className="text-slate-500">{category}</span> Section</h1>
+        <h1 className="md:text-3xl text-2xl font-extrabold">
+          <span className="text-slate-500">{category}</span> Section
+        </h1>
         <ProductGrid products={catItems} />
-        {
-            catItems.length === 0 && (
-                <div className="text-center text-gray-500 text-2xl mt-4">
-                No products found matching your search.
-                </div>
-            )
-        }
       </div>
     </div>
-
   );
 };
 
