@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import ProductGrid from "@/components/ProductGrid";
 
@@ -15,7 +15,7 @@ type Product = {
   discountPercentage: number;
 };
 
-const searchPage = () => {
+const SearchPage = () => {
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
   if (!query) {
@@ -42,18 +42,24 @@ const searchPage = () => {
   return (
     <div className="pt-4">
       <div className="max-w-[1380px] mx-auto px-4 py-8 flex flex-col gap-y-4">
-        <h1 className="opacity-[0.7] ">Found {searchItems.length} results for "{query}"</h1>
+        <h1 className="opacity-[0.7] ">
+          Found {searchItems.length} results for "{query}"
+        </h1>
         <ProductGrid products={searchItems} />
-        {
-            searchItems.length === 0 && (
-                <div className="text-center text-gray-500 text-2xl mt-4">
-                No products found matching your search.
-                </div>
-            )
-        }
+        {searchItems.length === 0 && (
+          <div className="text-center text-gray-500 text-2xl mt-4">
+            No products found matching your search.
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
-export default searchPage;
+export default function PageWithSuspense() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchPage />
+    </Suspense>
+  );
+}
