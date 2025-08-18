@@ -30,7 +30,6 @@ const SearchButton = () => {
     setSearchTerm(data.text);
     console.log("Search term submitted:", data.text);
     router.push(`/search?query=${data.text}`);
-
   };
 
   // Toggle the visibility of the search input
@@ -40,9 +39,9 @@ const SearchButton = () => {
   // console.log(open);
 
   return (
-    <div className="searchBox flex items-center relative">
-      <form onSubmit={handleSubmit(onSubmit)} className="searchForm flex items-center">
-        <input
+    <div className="">
+      <form onSubmit={handleSubmit(onSubmit)} className="searchForm">
+        {/* <input
           {...register("text")}
           name="text"
           type="text"
@@ -52,7 +51,19 @@ const SearchButton = () => {
         />
         <Button className=" cursor-pointer bg-slate-700">
           <FontAwesomeIcon icon={faSearch} className="searchIcon text-lg" />
-        </Button>
+        </Button> */}
+        <div className="searchBox flex items-center">
+          <input
+            {...register("text")}
+            name="text"
+            type="text"
+            className="searchInput"
+            placeholder="Search"
+          />
+          <Button className="searchButton">
+            <FontAwesomeIcon icon={faSearch} className="searchIcon md:text-lg" />
+          </Button>
+        </div>
       </form>
     </div>
   );

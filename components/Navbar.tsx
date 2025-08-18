@@ -22,7 +22,7 @@ const Navbar = () => {
 
   const toggleSearch = () => {
     if (window.innerWidth < 768) {
-      setOpen(!open);
+      setOpen(true);
     }
   };
 
