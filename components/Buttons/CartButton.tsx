@@ -5,7 +5,6 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { Settings } from "lucide-react";
-import SearchButton from "./SearchButton";
 
 const CartButton = () => {
   const [cartItems, setCartitems] = useState([]);
@@ -17,7 +16,6 @@ const CartButton = () => {
   console.log("cart items", cartItems);
   return (
     <div className="flex items-center gap-x-5">
-      <SearchButton />
       <Link href="/cart">
         <Button
           onClick={() => {

@@ -15,7 +15,6 @@ const searchSchema = z.object({
 type searchFormInputs = z.infer<typeof searchSchema>;
 
 const SearchButton = () => {
-  const [open, setOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
 
