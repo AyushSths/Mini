@@ -39,19 +39,19 @@ export default function AdminLoginPage() {
     <div className="min-h-screen flex justify-center items-center px-4 -mt-20">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="max-w-sm w-full space-y-4 border rounded-lg p-6 shadow"
+        className="max-w-sm w-full space-y-4 border rounded-lg p-6 shadow bg-gray-200"
       >
         <h2 className="text-2xl font-semibold text-center">Admin Login</h2>
 
         <div>
-          <Input placeholder="Email" {...register("email")} />
+          <Input placeholder="Email" {...register("email")} className="bg-gray-300"/>
           {errors.email && (
             <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
           )}
         </div>
 
         <div>
-          <Input type="password" placeholder="Password" {...register("password")} />
+          <Input type="password" placeholder="Password" {...register("password")} className="bg-gray-300"/>
           {errors.password && (
             <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
           )}

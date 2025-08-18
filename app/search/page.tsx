@@ -40,9 +40,9 @@ const SearchPage = () => {
   console.log("Search results:", searchItems);
 
   return (
-    <div className="pt-4">
+    <div className="pt-4 min-h-screen">
       <div className="max-w-[1380px] mx-auto px-4 py-8 flex flex-col gap-y-4">
-        <h1 className="opacity-[0.7] ">
+        <h1 className="opacity-[0.7] text-white">
           Found {searchItems.length} results for "{query}"
         </h1>
         <ProductGrid products={searchItems} />

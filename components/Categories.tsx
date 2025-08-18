@@ -32,8 +32,8 @@ const Categories = () => {
     router.push(`/products/category?category=${category}`);
   };
   return (
-    <div className="px-3 py-10">
-      <h1 className="md:text-3xl text-2xl font-bold mb-4">Categories</h1>
+    <div className="px-3">
+      <h1 className="md:text-3xl text-2xl font-bold mb-5 text-white text-center">Categories</h1>
       <div className="max-w-[1380px] mx-auto">
         <div className="flex flex-wrap justify-center">
           <div className="cursor-pointer grid lg:grid-cols-4 grid-cols-2 gap-2">

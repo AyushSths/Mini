@@ -40,10 +40,10 @@ const CategoryPage = () => {
   console.log("Category results:", catItems);
 
   return (
-    <div className="pt-4">
+    <div className="pt-4 min-h-screen">
       <div className="max-w-[1380px] mx-auto px-4 py-8 flex flex-col gap-y-4">
-        <h1 className="md:text-3xl text-2xl font-extrabold">
-          <span className="text-slate-500">{category}</span> Section
+        <h1 className="md:text-3xl text-2xl font-extrabold text-white">
+          <span className="text-slate-800">{category}</span> Section
         </h1>
         <ProductGrid products={catItems} />
       </div>

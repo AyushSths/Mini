@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import { usePathname } from "next/navigation";
 import type { Metadata } from "next";
@@ -7,6 +7,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "sonner";
 import "@/lib/fontawesome";
+import Footer from "@/components/Footer";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -33,10 +34,14 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>
-         {!isAdminRoute && <Navbar />}
-        {children}
-        <Toaster/>
+      <body className="relative h-full w-full bg-[url('/images/bg3.jpg')]  bg-cover bg-center z-100">
+        <div className="bg-black opacity-50 absolute h-[100%] w-full z-0" />
+        <div className="z-10 relative">
+          {!isAdminRoute && <Navbar />}
+          {children}
+          <Toaster />
+          <Footer />
+        </div>
       </body>
     </html>
   );

@@ -23,11 +23,13 @@ const ProductCard = async () => {
   const products: Product[] = data.products;
 
   return (
-    <>
+    <div className="productSection flex flex-col justify-center gap-y-10">
       <Categories />
-      <p className="px-3 mb-5 md:text-3xl text-2xl font-bold">All Products</p>
+      <div className="pb-10">
+        <p className="px-3 mb-5 md:text-3xl text-2xl font-bold text-white">All Products</p>
       <ProductGrid products={products} />
-    </>
+      </div>
+    </div>
   );
 };
 

@@ -57,9 +57,9 @@ const ProductDetail = () => {
   if (!prod) return <div className="p-4">Loading product...</div>;
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="h-full">
       <div className="lg:px-15 px-5 pt-10 max-w-[1480px] m-auto">
-        <p className="text-sm font-semibold opacity-60">
+        <p className="text-sm text-white font-semibold opacity-60">
           <Link href="/">Home</Link> &gt; Product &gt; {prod.title}
         </p>
         <div className="grid lg:grid-cols-2 gap-10 mt-10 bg-white p-7 rounded-md shadow-lg">
@@ -94,7 +94,7 @@ const ProductDetail = () => {
           </div>
         </div>
         <div className="py-10">
-          <h2 className="text-3xl font-bold my-8 px-5">Similar Products</h2>
+          <h2 className="text-3xl font-bold my-8 px-5 text-white">Similar Products</h2>
           <ProductGrid products={similarProducts}/>
         </div>
       </div>

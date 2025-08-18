@@ -1,0 +1,15 @@
+import React from "react";
+
+const Footer = () => {
+  return (
+    <div className="bg-slate-900">
+      <div>
+        <div className="text-white text-center p-4 md:text-base text-sm">
+          <p>Copyright © 2025 by Ayush | All Rights Reserved</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Footer;

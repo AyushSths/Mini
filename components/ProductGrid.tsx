@@ -37,7 +37,7 @@ const ProductGrid = ({ products }: { products: Product[] }) => {
         {products.map((item) => (
           <Card
             key={item.id}
-            className="group flex flex-col pt-0 transform duration-150 ease-in hover:bg-gray-200 h-full shadow-lg cursor-pointer"
+            className="group bg-gray-50 border-none flex flex-col pt-0 transform duration-150 ease-in hover:bg-gray-200 h-full shadow-lg cursor-pointer"
             onClick={() => handleViewProduct(item)}
           >
             <div className="flex justify-center">
