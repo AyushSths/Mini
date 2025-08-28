@@ -33,7 +33,7 @@ const Categories = () => {
   };
   return (
     <div className="px-3">
-      <h1 className="md:text-3xl text-2xl font-bold mb-5 text-white text-center">Categories</h1>
+      <h1 className="md:text-3xl text-2xl font-bold mb-5 text-center">Categories</h1>
       <div className="max-w-[1380px] mx-auto">
         <div className="flex flex-wrap justify-center">
           <div className="cursor-pointer grid lg:grid-cols-4 grid-cols-2 gap-2">
@@ -51,7 +51,7 @@ const Categories = () => {
                       className="h-full object-cover rounded-md"
                     />
                   </div>
-                  <div className="group flex flex-col justify-center relative z-10 h-full bg-black text-white lg:opacity-0 opacity-75 backdrop-blur-2xl md:hover:opacity-75 transition-opacity duration-300 rounded-lg transform translate-y-[-100%] md:p-4 p-2">
+                  <div className="group flex flex-col justify-center relative z-10 h-full bg-emerald-900 text-white lg:opacity-0 opacity-75 backdrop-blur-2xl md:hover:opacity-75 transition-opacity duration-300 rounded-lg transform translate-y-[-100%] md:p-4 p-2">
                     <div className="flex flex-col justify-center items-center transform lg:translate-y-[100%] translate-y-0 md:group-hover:translate-y-0 transition-transform duration-300">
                       <h2 className="md:text-3xl text-xl font-semibold mb-2">
                         {item.name}

@@ -1,6 +1,7 @@
 import React from "react";
 import ProductGrid from "./ProductGrid"; // 👈 adjust path if needed
 import Categories from "./Categories";
+import FilterButton from "./Buttons/FilterButton";
 
 type Product = {
   id: string;
@@ -26,8 +27,13 @@ const ProductCard = async () => {
     <div className="productSection flex flex-col justify-center gap-y-10">
       <Categories />
       <div className="pb-10">
-        <p className="px-3 mb-5 md:text-3xl text-2xl font-bold text-white">All Products</p>
-      <ProductGrid products={products} />
+        <div className="flex justify-between items-center ">
+          <p className="px-3 mb-5 md:text-3xl text-2xl font-bold  ">
+            All Products
+          </p>
+          <FilterButton />
+        </div>
+        <ProductGrid products={products} />
       </div>
     </div>
   );

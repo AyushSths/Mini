@@ -38,7 +38,7 @@ const Cart = () => {
   return (
     <div className="min-h-screen">
       <div className="lg:px-15 px-3 max-w-[1480px] m-auto pt-10">
-        <p className="md:text-base text-sm font-semibold opacity-60 text-white">
+        <p className="md:text-base text-sm font-semibold opacity-60">
           <Link href="/">Home</Link> {">"} Cart
         </p>
         <div className="grid lg:grid-cols-3 grid-rows-1 gap-x-10 gap-y-5 mt-5">

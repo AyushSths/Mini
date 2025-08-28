@@ -13,7 +13,7 @@ const CartButton = () => {
   return (
     <div className="flex items-center gap-x-5">
       <Link href="/cart">
-        <Button className="cursor-pointer relative z-0 bg-slate-700 hover:bg-slate-800">
+        <Button className="cursor-pointer relative z-0 bg-gray-200 hover:bg-white transform transition duration-150 ease-in">
           {cart?.length == 0 ? (
             " "
           ) : (
@@ -21,15 +21,18 @@ const CartButton = () => {
               {cart?.length}
             </p>
           )}
-          <FontAwesomeIcon icon={faShoppingCart} className="text-lg" />
+          <FontAwesomeIcon
+            icon={faShoppingCart}
+            className="text-lg text-emerald-600"
+          />
         </Button>
       </Link>
 
       <Link
         href="/login"
-        className="ml-auto hover:bg-slate-800 bg-slate-700 p-2.5 rounded-lg"
+        className="ml-auto hover:bg-white bg-gray-200 p-2.5 rounded-lg transform transition duration-150 ease-in"
       >
-        <Settings size={18} />
+        <Settings size={18} className="text-emerald-600" />
       </Link>
     </div>
   );

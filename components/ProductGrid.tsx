@@ -33,30 +33,30 @@ const ProductGrid = ({ products }: { products: Product[] }) => {
 
   return (
     <div>
-      <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 md:gap-6 gap-3 px-3 ">
+      <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 md:gap-4 gap-3 px-3 ">
         {products.map((item) => (
           <Card
             key={item.id}
-            className="group bg-gray-50 border-none flex flex-col pt-0 transform duration-150 ease-in hover:bg-gray-200 h-full shadow-lg cursor-pointer"
+            className="group bg-none border-none flex flex-col pt-0 transform duration-150 ease-in  h-full cursor-pointer"
             onClick={() => handleViewProduct(item)}
           >
             <div className="flex justify-center">
               <img
                 src={item.thumbnail}
                 alt={item.title}
-                className="rounded-t-lg w-full object-contain transform duration-150 ease-in drop-shadow-lg drop-shadow-gray-500 group-hover:scale-[1.05]"
+                className="rounded-sm w-full bg-gray-200 object-contain transform duration-150 ease-in drop-shadow-md drop-shadow-gray-300 group-hover:scale-[1.03]"
               />
             </div>
             <CardHeader className="h-full">
               <CardTitle className="md:text-base text-[13px] opacity-[0.7]">
                 {item.title}
               </CardTitle>
-              <CardDescription className="md:text-xl text-base text-red-600">
+              <CardDescription className="md:text-lg text-base text-red-600">
                 Rs.{item.price}
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-gray-400 text-sm flex items-center gap-x-2"> <StarRating rating={item.rating}/>{item.rating}</div>
+              <div className="text-gray-400 text-sm flex items-center gap-x-1"> <StarRating rating={item.rating}/>{item.rating}</div>
               {/* <p className="text-gray-400 text-sm">{item.category}</p> */}
             </CardContent>
           </Card>

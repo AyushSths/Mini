@@ -52,7 +52,7 @@ const SearchButton = () => {
         <Button className=" cursor-pointer bg-slate-700">
           <FontAwesomeIcon icon={faSearch} className="searchIcon text-lg" />
         </Button> */}
-        <div className="searchBox flex items-center">
+        <div className="searchBox group flex items-center ">
           <input
             {...register("text")}
             name="text"
@@ -60,8 +60,8 @@ const SearchButton = () => {
             className="searchInput"
             placeholder="Search"
           />
-          <Button className="searchButton">
-            <FontAwesomeIcon icon={faSearch} className="searchIcon md:text-lg" />
+          <Button className="searchButton cursor-pointer bg-gray-200 hover:bg-white transform transition duration-150 ease-in">
+            <FontAwesomeIcon icon={faSearch} className="searchIcon md:text-lg text-emerald-600 group-hover:text-white" />
           </Button>
         </div>
       </form>
