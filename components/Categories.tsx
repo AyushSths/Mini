@@ -48,12 +48,12 @@ const Categories = () => {
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="h-full object-cover rounded-md"
+                      className="h-full object-cover rounded-md z-0"
                     />
                   </div>
-                  <div className="group flex flex-col justify-center relative z-10 h-full bg-emerald-900 text-white lg:opacity-0 opacity-75 backdrop-blur-2xl md:hover:opacity-75 transition-opacity duration-300 rounded-lg transform translate-y-[-100%] md:p-4 p-2">
+                  <div className="group flex flex-col justify-center relative  h-full bg-black text-emerald-200 lg:opacity-0 opacity-75 backdrop-blur-2xl md:hover:opacity-75 transition-opacity duration-300 rounded-lg transform translate-y-[-100%] md:p-4 p-2 z-10">
                     <div className="flex flex-col justify-center items-center transform lg:translate-y-[100%] translate-y-0 md:group-hover:translate-y-0 transition-transform duration-300">
-                      <h2 className="md:text-3xl text-xl font-semibold mb-2">
+                      <h2 className="md:text-3xl text-xl font-bold mb-2 text-emerald-200 [text-shadow:0_0_10px_#14B8A6,0_0_20px_#14B8A6,0_0_40px_#14B8A6] uppercase">
                         {item.name}
                       </h2>
                       <p className="text-center md:text-base text-xs">

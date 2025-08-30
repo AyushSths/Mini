@@ -6,11 +6,12 @@ import CartQuantity from "./CartQuantity";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Chkbtn from "./Chkbtn";
+import { useRouter } from "next/navigation";
 
 const Cart = () => {
   const cart = useCartStore((state) => state.cart);
   const { removeFromCart } = useCartStore((state) => state);
-
+const router = useRouter();
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
   const handleCheck = (id: string) => {
@@ -52,8 +53,8 @@ const Cart = () => {
               cart.map((item, index) => {
                 return (
                   <div
-                    className="flex border-b-2 p-1 pb-3 md:p-3 items-center md:gap-x-10 gap-x-2"
-                    key={index}
+                    className="flex border-b-2 p-1 pb-3 md:p-3 items-center md:gap-x-10 gap-x-2 cursor-pointer"
+                    key={index} 
                   >
                     <input
                       type="checkbox"
@@ -61,7 +62,7 @@ const Cart = () => {
                       checked={checkedItems.includes(item.id)}
                       onChange={() => handleCheck(item.id)}
                     />
-                    <div className="grid grid-cols-2 md:gap-x-50 gap-x-20 items-center">
+                    <div className="grid grid-cols-2 md:gap-x-50 gap-x-20 items-center" onClick={()=>{router.push(`/products/detail/${item.id}`)}}>
                       <div className="flex gap-4 ">
                         <img
                           src={item.thumbnail}

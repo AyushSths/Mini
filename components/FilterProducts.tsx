@@ -9,6 +9,7 @@ import {
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 import LeftSec from "@/app/filterSection/LeftSec";
 import TopSection from "@/app/filterSection/TopSection";
+import { SkeletonDemo } from "./Loader/SkeletonDemo";
 
 export type Product = {
   id: string;
@@ -259,8 +260,8 @@ const FilterProducts = () => {
   }, [selectedFilterOptions, products]);
 
   return products.length === 0 ? (
-    <div className="p-4 text-white h-screen my-auto flex items-center justify-center text-xl">
-      <span>Loading products...</span>
+    <div className="flex items-center justify-center h-screen">
+      <div className="w-12 h-12 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin"></div>
     </div>
   ) : (
     <div className="max-w-[1380px] mx-auto md:py-10 py-4">

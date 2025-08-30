@@ -46,7 +46,7 @@ const Navbar = () => {
   return (
     <div
       ref={navRef}
-      className={`navbar -mt-0.5 bg-[#059669] text-white sticky top-0 z-100 ${
+      className={`navbar bg-[#059669] text-white sticky top-0 z-100 ${
         scrollBy == true ? "shadow-lg" : null
       } `}
     >

@@ -5,6 +5,7 @@ import Link from "next/link";
 import AddBtn from "../../AddBtn";
 import StarRating from "../../../../components/StarRating";
 import ProductGrid from "@/components/ProductGrid";
+import { useParams } from "next/navigation";
 
 type Product = {
   id: string;
@@ -21,38 +22,61 @@ type Product = {
 const ProductDetail = () => {
   const [prod, setProduct] = useState<any>();
   const [similarProducts, setSimilarProducts] = useState([]);
+  const { id } = useParams();
 
-  useEffect(() => {
-    // const fetchProduct = async () => {
-    //   const res = await fetch("https://dummyjson.com/products");
-    //   const data = await res.json();
+   useEffect(() => {
+    if (!id) return;
 
-    //   console.log(data);
-    //   const products: Product[] = data.products;
-    // };
+    // fetch main product
+    const fetchProduct = async () => {
+      const res = await fetch(`https://dummyjson.com/products/${id}`);
+      const data: Product = await res.json();
+      setProduct(data);
+
+      // fetch similar products
+      const res2 = await fetch("https://dummyjson.com/products");
+      const allProducts = await res2.json();
+      const items = allProducts.products.filter(
+        (product: Product) =>
+          product.category === data.category && product.id !== data.id
+      );
+      setSimilarProducts(items);
+    };
+
+    fetchProduct();
+  }, [id]);
+
+//   useEffect(() => {
+//     // const fetchProduct = async () => {
+//     //   const res = await fetch("https://dummyjson.com/products");
+//     //   const data = await res.json();
+
+//     //   console.log(data);
+//     //   const products: Product[] = data.products;
+//     // };
     
-    const saved = localStorage.getItem("selectedProduct");
-    if (saved) {
-      setProduct(JSON.parse(saved));
-    }
-    if (!prod) return;
+//     const saved = localStorage.getItem("selectedProduct");
+//     if (saved) {
+//       setProduct(JSON.parse(saved));
+//     }
+//     if (!prod) return;
 
-    // fetchProduct();
+//     // fetchProduct();
 
-  const fetchSimilarProducts = async () => {
-    const res = await fetch("https://dummyjson.com/products");
-    const data = await res.json();
-    const items = data.products.filter(
-      (product: Product) =>
-        product.category === prod.category && product.id !== prod.id
-    );
-    console.log("similarProducts", items);
+//   const fetchSimilarProducts = async () => {
+//     const res = await fetch("https://dummyjson.com/products");
+//     const data = await res.json();
+//     const items = data.products.filter(
+//       (product: Product) =>
+//         product.category === prod.category && product.id !== prod.id
+//     );
+//     console.log("similarProducts", items);
 
-    setSimilarProducts(items);
-  };
+//     setSimilarProducts(items);
+//   };
 
-  fetchSimilarProducts();
-}, [prod?.category, prod?.id]);
+//   fetchSimilarProducts();
+// }, [prod?.category, prod?.id]);
 
   if (!prod) return <div className="p-4">Loading product...</div>;
 
