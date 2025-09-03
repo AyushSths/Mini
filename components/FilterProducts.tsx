@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -32,6 +32,8 @@ export type SortOption = {
 
 const FilterProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [open, setOpen] = useState(false);
+  const sidebarRef = useRef<HTMLDivElement>(null);
   const [sortProducts, setSortProducts] = useState<Product[]>([]);
   const [selectedSort, setSelectedSort] = useState<SortOption | null>(null);
   const [selectedFilterOptions, setSelectedFilterOptions] = useState<string[]>(
@@ -258,6 +260,26 @@ const FilterProducts = () => {
       );
     }
   }, [selectedFilterOptions, products]);
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node)
+      ) {
+        setOpen(false);
+      }
+    }
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
 
   return products.length === 0 ? (
     <div className="flex items-center justify-center h-screen">
@@ -265,13 +287,19 @@ const FilterProducts = () => {
     </div>
   ) : (
     <div className="max-w-[1380px] mx-auto md:py-10 py-4">
+      {open && (
+        <div className="fixed inset-0 bg-black opacity-70 z-10 transition-opacity duration-300"></div>
+      )}
       <div className="productSection flex justify-center gap-x-7 ">
         <LeftSec
+          ref={sidebarRef}
           setSelectedFilterOptions={setSelectedFilterOptions}
           setSelectedSort={setSelectedSort}
           products={products}
           starsData={starsData}
           handleStarRating={handleStarRating}
+          open={open}
+          setOpen={setOpen}
         />
         <TopSection
           setSelectedSort={setSelectedSort}
@@ -281,6 +309,8 @@ const FilterProducts = () => {
           sortProducts={sortProducts}
           sortOptions={sortOptions}
           products={products}
+          open={open}
+          setOpen={setOpen}
         />
       </div>
     </div>

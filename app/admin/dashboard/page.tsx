@@ -29,11 +29,9 @@ export default function DashboardPage() {
     }
 
     const fetchData = async () => {
-      const res = await fetch(
-        "https://api.freeapi.app/api/v1/public/randomproducts"
-      );
+      const res = await fetch("https://dummyjson.com/products");
       const data = await res.json();
-      setProducts(data?.data.data || []);
+      setProducts(data?.products || []);
     };
     fetchData();
   }, []);
@@ -56,7 +54,7 @@ export default function DashboardPage() {
         </Card>
         <Card className="cursor-pointer group flex flex-row pr-3 items-center justify-between pb-5 transform duration-150 ease-in hover:scale-[1.05] bg-emerald-600 text-white rounded-md">
           <div className="w-full space-y-2">
-            <CardHeader onClick={() => router.push("/admin/products")}>
+            <CardHeader onClick={() => router.push("/admin/orders")}>
               <CardTitle className="text-xl font-bold">Total Orders</CardTitle>
             </CardHeader>
             <CardContent>{orders?.length}</CardContent>
@@ -67,7 +65,7 @@ export default function DashboardPage() {
         </Card>
         <Card className="cursor-pointer group flex flex-row pr-3 items-center justify-between pb-5 transform duration-150 ease-in hover:scale-[1.05] bg-emerald-600 text-white rounded-md">
           <div className="w-full space-y-2">
-            <CardHeader onClick={() => router.push("/admin/products")}>
+            <CardHeader onClick={() => router.push("/admin/revenue")}>
               <CardTitle className="text-xl font-bold">Total Revenue</CardTitle>
             </CardHeader>
             <CardContent>Rs. {totalRevenue}</CardContent>

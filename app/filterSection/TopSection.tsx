@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Listbox } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { Divide, X } from "lucide-react";
@@ -14,6 +14,8 @@ interface LeftSectionProps {
   sortProducts: Product[];
   selectedSort: SortOption | null;
   sortOptions: SortOption[];
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const TopSection: React.FC<LeftSectionProps> = ({
@@ -24,9 +26,11 @@ const TopSection: React.FC<LeftSectionProps> = ({
   sortProducts,
   selectedSort,
   sortOptions,
+  open,
+  setOpen,
 }) => {
   return (
-    <div className="">
+    <div className="relative z-0">
       <div className=" flex justify-between items-center mb-4">
         <div className="w-full">
           <div className="flex items-center justify-between px-3">
@@ -34,7 +38,7 @@ const TopSection: React.FC<LeftSectionProps> = ({
               Total Products : {sortProducts.length}
             </div>
             <div className="lg:hidden flex justify-end">
-              <SlideFilterButton />
+              <SlideFilterButton open={open} setOpen={setOpen} />
             </div>
             <div className=" z-20 bg-gray-200 px-3 py-1 rounded-md items-center lg:flex hidden">
               <span className="opacity-80 mr-2">Sort by :</span>

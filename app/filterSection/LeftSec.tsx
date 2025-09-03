@@ -1,22 +1,55 @@
-import { Product } from '@/components/FilterProducts';
-import React from 'react'
-
+import { Product } from "@/components/FilterProducts";
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 interface LeftSectionProps {
   setSelectedSort: (sort: any) => void;
   setSelectedFilterOptions: React.Dispatch<React.SetStateAction<string[]>>;
   products: Product[];
-  starsData: { label: string; value: number; icon: React.ReactNode; desc: string }[];
+  starsData: {
+    label: string;
+    value: number;
+    icon: React.ReactNode;
+    desc: string;
+  }[];
   handleStarRating: (rating: number) => void;
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const LeftSec: React.FC<LeftSectionProps> = ({ setSelectedSort, setSelectedFilterOptions, products,
-  starsData,
-  handleStarRating }) => {
-  return (
-    
-      
-        <div className="lg:flex hidden flex-col justify-start z-10 rounded-l-md backdrop-blur-3xl border-r-2 bg-opacity-50  h-full">
+const LeftSec = React.forwardRef<HTMLDivElement, LeftSectionProps>(
+  (
+    {
+      setSelectedSort,
+      setSelectedFilterOptions,
+      products,
+      starsData,
+      handleStarRating,
+      open,
+      setOpen,
+    },
+    ref
+  ) => {
+    return (
+      <div
+        ref={ref}
+        className={` flex-col justify-start z-10 rounded-l-md  backdrop-blur-3xl border-r-2 bg-opacity-50  h-full ${
+          open == true
+            ? "flex absolute h-screen overflow-y-scroll -right-0 -mt-3.5 z-30 bg-white"
+            : "lg:flex hidden"
+        }`}
+      >
+          <button className="flex pt-3 justify-end px-5">
+            <FontAwesomeIcon
+              icon={faTimes}
+              className="text-gray-600 text-xl"
+              onClick={() => {
+                setOpen(!open);
+              }}
+            />
+          </button>
+        <div className="">
           <div className="border-b-2 flex items-center justify-between py-2 px-3">
             <h1 className="text-xl font-semibold">FILTERS</h1>
             <p
@@ -137,8 +170,9 @@ const LeftSec: React.FC<LeftSectionProps> = ({ setSelectedSort, setSelectedFilte
             </div>
           </div>
         </div>
-     
-  )
-}
+      </div>
+    );
+  }
+);
 
 export default LeftSec;

@@ -18,10 +18,10 @@ export default function ProductsPage() {
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        "https://api.freeapi.app/api/v1/public/randomproducts"
+        "https://dummyjson.com/products"
       );
       const data = await res.json();
-      setProducts(data?.data.data || []);
+      setProducts(data?.products || []);
     };
     fetchData();
   }, []);
