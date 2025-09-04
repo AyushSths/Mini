@@ -33,7 +33,7 @@ const ProductGrid = ({ products }: { products: Product[] }) => {
 
   return (
     <div>
-      <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 md:gap-4 gap-3 px-3 ">
+      <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 md:gap-4 gap-3 px-3">
         {products.map((item) => (
           <Card
             key={item.id}
@@ -56,7 +56,11 @@ const ProductGrid = ({ products }: { products: Product[] }) => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-gray-400 text-sm flex items-center gap-x-1"> <StarRating rating={item.rating}/>{item.rating}</div>
+              <div className="text-gray-400 text-sm flex items-center gap-x-1">
+                {" "}
+                <StarRating rating={item.rating} />
+                {item.rating}
+              </div>
               {/* <p className="text-gray-400 text-sm">{item.category}</p> */}
             </CardContent>
           </Card>

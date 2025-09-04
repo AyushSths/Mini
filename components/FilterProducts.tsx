@@ -286,11 +286,11 @@ const FilterProducts = () => {
       <div className="w-12 h-12 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin"></div>
     </div>
   ) : (
-    <div className="max-w-[1380px] mx-auto md:py-10 py-4">
+    <div className="max-w-[1380px] mx-auto md:py-10 py-4 h-full ">
       {open && (
         <div className="fixed inset-0 bg-black opacity-70 z-10 transition-opacity duration-300"></div>
       )}
-      <div className="productSection flex justify-center gap-x-7 ">
+      <div className="productSection flex justify-center gap-x-7">
         <LeftSec
           ref={sidebarRef}
           setSelectedFilterOptions={setSelectedFilterOptions}
@@ -300,6 +300,9 @@ const FilterProducts = () => {
           handleStarRating={handleStarRating}
           open={open}
           setOpen={setOpen}
+          selectedFilterOptions={selectedFilterOptions}
+          sortProducts = {sortProducts}
+          setSortProducts = {setSortProducts}
         />
         <TopSection
           setSelectedSort={setSelectedSort}

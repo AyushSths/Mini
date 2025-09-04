@@ -129,7 +129,9 @@ const TopSection: React.FC<LeftSectionProps> = ({
         </div>
       </div>
 
-      <ProductGrid products={sortProducts} />
+      <div className="h-full">
+        <ProductGrid products={sortProducts} />
+      </div>
     </div>
   );
 };
